@@ -31,6 +31,7 @@ class LoginForm extends Component {
 
 
   render() {
+    const {data,errors} = this.state;
     return (
         <div className='login-form'>
         {/*
@@ -57,7 +58,8 @@ class LoginForm extends Component {
                     icon='user' 
                     iconPosition='left' 
                     placeholder='E-mail address' 
-                    // error={true}
+                    value={data.email}
+                    error={!!errors.email}
                     onChange={this.onChange}
                 />
                 <Form.Input

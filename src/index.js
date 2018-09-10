@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './redux/rootReducer';
 
 
-const store =createStore(
+const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 );
