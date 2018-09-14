@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment ,Icon} from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react';
 import Validator from 'validator';
+import PropTypes from 'prop-types';
 
 class SignupForm extends Component {
 
     state = {
         data: {
+            name: '',
             email: '',
-            password: ''
+            password: '',
+            confirmedPassword: ''
         },
         loading: false,
         errors: {}
@@ -22,25 +25,25 @@ class SignupForm extends Component {
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "can't be blank";
+        if (data.password !== data.confirmedPassword) errors.confirmedPassword = "password is not match";
         return errors;
     }
 
-    onSubmit = () =>  {
+    onSubmit = () => {
         const errors = this.validate(this.state.data);
-        this.setState({errors});
-        if( Object.keys(errors).length === 0){
-            this.setState({loading:true});
+        this.setState({ errors });
+        if (Object.keys(errors).length === 0) {
+            this.setState({ loading: true });
             this.props
-            .submit(this.state.data)
-            .catch(err => this.setState({errors:err.response.data.errors,loading:false}));
+                .submit(this.state.data)
+                .catch(err => this.setState({ errors: err.response.data.errors, loading: false }));
         }
-
-        console.log(this.state.data)
     }
 
     render() {
+        console.log(this.props)
         const { data, errors } = this.state;
-        
+
         return (
             <div className='login-form'>
                 {/*
@@ -60,7 +63,7 @@ class SignupForm extends Component {
                         <Header as='h2' color='teal' textAlign='center'>
                             <Icon name='user circle' /> Sign Up your new account
                         </Header>
-                        <Form size='large' onSubmit={this.onSubmit}>
+                        <Form size='large' onSubmit={this.onSubmit} error>
                             <Segment stacked>
                                 <Form.Input
                                     fluid
@@ -81,6 +84,14 @@ class SignupForm extends Component {
                                     value={data.email}
                                     onChange={this.onChange}
                                 />
+                                
+                                 { errors.email &&<Message
+                                    size='small'
+                                    error
+                                    header={errors.email}
+                                    content='email must correct patten'
+                                />}
+                                
                                 <Form.Input
                                     fluid
                                     icon='lock'
@@ -90,11 +101,32 @@ class SignupForm extends Component {
                                     name='password'
                                     value={data.password}
                                     onChange={this.onChange}
-                                    onSubmit = {this.onSubmit}
+                                    onSubmit={this.onSubmit}
+                                    error={errors.password}
                                 />
 
-                                <Button 
-                                    color='teal' 
+                                <Form.Input
+                                    fluid
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Confirm Password'
+                                    type='password'
+                                    name='confirmedPassword'
+                                    error={!!errors.confirmedPassword}
+                                    value={data.confirmedPassword}
+                                    onChange={this.onChange}
+                                    onSubmit={this.onSubmit}
+                                />
+
+                               { errors.confirmedPassword &&<Message
+                                    size='small'
+                                    error
+                                    header={errors.confirmedPassword}
+                                    content='Password must be the same'
+                                />}
+
+                                <Button
+                                    color='teal'
                                     fluid size='large'
                                     onClick={this.onSubmit}
                                 >
@@ -107,6 +139,10 @@ class SignupForm extends Component {
             </div>
         )
     }
+}
+
+SignupForm.propTypes = {
+    submit : PropTypes.func.isRequired
 }
 
 export default SignupForm;

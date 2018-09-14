@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment,Icon } from 'semantic-ui-react';
 import Validator from 'validator';
+import PropTypes from 'prop-types';
 
 
 class LoginForm extends Component {
@@ -27,10 +28,22 @@ class LoginForm extends Component {
         return errors;
     }
 
+    
+    onSubmit = () =>  {
+      const errors = this.validate(this.state.data);
+      this.setState({errors});
+      if( Object.keys(errors).length === 0){
+          this.setState({loading:true});
+          this.props
+          .submit(this.state.data)
+          .catch(err => this.setState({errors:err.response.data.errors,loading:false}));
+      }
+  }
 
 
 
   render() {
+    console.log(this.props)
     const {data,errors} = this.state;
     return (
         <div className='login-form'>
@@ -49,17 +62,19 @@ class LoginForm extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/logo.png' /> Log-in to your account
+            <Icon name='user circle' /> Log-in to your account
             </Header>
-            <Form size='large'>
+            <Form size='large' onSubmit={this.onSubmit}>
               <Segment stacked>
                 <Form.Input 
                     fluid
                     icon='user' 
                     iconPosition='left' 
+                    type='email'
                     placeholder='E-mail address' 
                     value={data.email}
-                    error={!!errors.email}
+                    // error={!!errors.email}
+                    name='email'
                     onChange={this.onChange}
                 />
                 <Form.Input
@@ -67,7 +82,9 @@ class LoginForm extends Component {
                   icon='lock'
                   iconPosition='left'
                   placeholder='Password'
+                  name='password'
                   type='password'
+                  onChange={this.onChange}
                 />
     
                 <Button color='teal' fluid size='large'>
@@ -83,6 +100,10 @@ class LoginForm extends Component {
       </div>
     )
   }
+}
+
+LoginForm.propTypes = {
+  submit : PropTypes.func.isRequired
 }
 
 export default LoginForm;

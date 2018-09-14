@@ -8,7 +8,10 @@ import SignupForm from '../forms/SignupForm';
 class SignupPage extends Component {
 
   submit = data => 
-    this.props.signup(data).then(()=>this.props.history.push('/'));
+    this.props.signup(data).then((a)=>{
+      this.props.history.push('/login')
+      console.log('submit')
+    });
 
   render() {
     return (
