@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {logout} from '../../redux/actions/auth';
+
+
 
 class DashBoardPage extends Component {
 
   logout = () => {
-    localStorage.removeItem('mobilecomJWT')
+    this.props.logout()
     this.props.history.push('/')
-
   }
 
   render() {
@@ -18,4 +23,8 @@ class DashBoardPage extends Component {
   }
 }
 
-export default DashBoardPage;
+DashBoardPage.proptypes = {
+  logout : PropTypes.func.isRequired
+}
+
+export default connect(null,{logout})(DashBoardPage);
