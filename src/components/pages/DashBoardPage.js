@@ -17,7 +17,7 @@ class DashBoardPage extends Component {
     return (
       <div>
         <h1>DashBoard</h1>
-        <button onClick={()=>this.logout()}>Logout</button>
+        <button onClick={this.logout}>Logout</button>
       </div>
     )
   }

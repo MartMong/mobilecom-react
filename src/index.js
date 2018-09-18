@@ -8,6 +8,8 @@ import {Provider} from 'react-redux';
 import decode from 'jwt-decode';
 
 import "semantic-ui-css/semantic.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './redux/rootReducer';

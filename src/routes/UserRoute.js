@@ -16,7 +16,6 @@ const UserRoute = ({ isAuthenticated, component: Component, ...rest }) => (
 );
 
 function mapStateToProps(state) {
-    console.log(!!state.user.token)
     return {
         isAuthenticated: !!state.user.token
     }
