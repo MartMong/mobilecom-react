@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route,withRouter } from 'react-router-dom';
-import {connect} from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LoginPage from './components/pages/LoginPage';
@@ -14,17 +14,25 @@ import Navbar from './components/navigation/NavbarTop';
 import UserRoute from './routes/UserRoute';
 import GuestRoute from './routes/GuestRoute';
 
+import { Container } from 'reactstrap';
+
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
-        <GuestRoute path='/' exact component={HomePage}/>
-        <GuestRoute path='/login' exact component={LoginPage} />
-        <GuestRoute path='/signup' exact component={SignupPage} />
-        <UserRoute path='/dashboard' exact component={DashBoardPage}/>
-        <UserRoute path='/account' exact component={AccountPage}/>
+        <Container>
+          
+          <Navbar />
+          
+          <div style={{marginTop:100}}>
+          <GuestRoute path='/' exact component={HomePage} />
+          <GuestRoute path='/login' exact component={LoginPage} />
+          <GuestRoute path='/signup' exact component={SignupPage} />
+          <UserRoute path='/dashboard' exact component={DashBoardPage} />
+          <UserRoute path='/account' exact component={AccountPage} />
+          </div>
+        </Container>
       </div>
 
     );
@@ -32,12 +40,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isAuthenticated : PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated : !!state.user.email
+    isAuthenticated: !!state.user.email
   }
 }
 

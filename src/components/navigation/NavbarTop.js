@@ -91,7 +91,9 @@ class NavbarTop extends React.Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink href="/">Home</NavLink>
+                      <Link to="/dashboard">
+                        <NavLink>Home</NavLink>
+                      </Link>
                     </NavItem>
                     <NavItem>
                       <Link to='/account'>

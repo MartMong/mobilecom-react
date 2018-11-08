@@ -1,30 +1,32 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {logout} from '../../redux/actions/auth';
-
-
-
+import ProductCard from '../ProductCard';
+import {Row} from 'reactstrap';
 class DashBoardPage extends Component {
 
-  logout = () => {
-    this.props.logout()
-    this.props.history.push('/')
+  cards = () => {
+    let cards = [];
+    for (let i = 0; i < 20; i++) {
+      {
+        cards.push(<ProductCard/>);
+      }
+    }
+    return <Row>{cards}</Row>;
   }
+
+
 
   render() {
     return (
-      <div>
-        <h1>DashBoard</h1>
-        <button onClick={this.logout}>Logout</button>
+      <div style={{ marginTop: '100px' }}>
+        {this.cards()}
       </div>
     )
   }
 }
 
-DashBoardPage.proptypes = {
-  logout : PropTypes.func.isRequired
-}
 
-export default connect(null,{logout})(DashBoardPage);
+
+export default DashBoardPage;
