@@ -13,10 +13,6 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from 'reactstrap';
 
 
@@ -62,24 +58,6 @@ class NavbarTop extends React.Component {
                   <NavItem>
                     <NavLink href="/">Promotions</NavLink>
                   </NavItem>
-                  <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                      Shopping
-                  </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>
-                        Option 1
-                    </DropdownItem>
-                      <DropdownItem>
-                        Option 2
-                    </DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>
-                        Reset
-                    </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-
                   <Form inline>
                     <Input type="search" className="mr-3" placeholder="Search..." />
                     <span>
@@ -99,48 +77,7 @@ class NavbarTop extends React.Component {
             </Navbar>
           </header>
         </div>)
-        // (<div>
-        //   <Navbar color="light" light expand="md">
-        //     <Link to={'/'}>
-        //       <p className='navbar-brand'>MO Shop</p>
-        //     </Link>
-        //     <NavbarToggler onClick={this.toggle} />
-        //     <Collapse isOpen={this.state.isOpen} navbar>
-        //       <Nav className="ml-auto" navbar>
-        //         <NavItem>
-        //           <Link to={'/login'} style={{ textDecoration: 'none' }}>
-        //             <p className="nav-link">Login</p>
-        //           </Link>
-        //         </NavItem>
-        //         <NavItem>
-        //           <Link to={'/signup'} style={{ textDecoration: 'none' }}>
-        //             <p className="nav-link">Signup</p>
-        //           </Link>
-        //         </NavItem>
-        //         <UncontrolledDropdown nav inNavbar>
-        //           <DropdownToggle nav caret>
-        //             Options
-        //         </DropdownToggle>
-        //           <DropdownMenu right>
-        //             <DropdownItem>
-        //               Option 1
-        //           </DropdownItem>
-        //             <DropdownItem>
-        //               Option 2
-        //           </DropdownItem>
-        //             <DropdownItem divider />
-        //             <DropdownItem>
-        //               Reset
-        //           </DropdownItem>
-        //           </DropdownMenu>
-        //         </UncontrolledDropdown>
-        //       </Nav>
-        //     </Collapse>
-        //   </Navbar>
-        // </div>)
-
         :
-
         (
           <div>
             <header>
@@ -157,26 +94,10 @@ class NavbarTop extends React.Component {
                       <NavLink href="/">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="/">Promotions</NavLink>
+                      <Link to='/account'>
+                        <NavLink>Account</NavLink>
+                      </Link>
                     </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                      <DropdownToggle nav caret>
-                        Shopping
-                  </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem>
-                          Option 1
-                    </DropdownItem>
-                        <DropdownItem>
-                          Option 2
-                    </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                          Reset
-                    </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-
                     <Form inline>
                       <Input type="search" className="mr-3" placeholder="Search..." />
                       <span>
@@ -185,43 +106,15 @@ class NavbarTop extends React.Component {
                         </button></span>
                     </Form>
                     <NavItem>
-                      <button class='ui icon button mr-3' role='button' onClick={this.logout()}>
+                      <button class='ui icon button mr-3' role='button' onClick={this.logout}>
                         Logout
-              </button>
+                      </button>
                     </NavItem>
                   </Nav>
                 </Collapse>
               </Navbar>
             </header>
           </div>
-
-
-          // <div>
-          //   <Navbar color="light" light expand="md">
-          //     <Link to={'/dashboard'}>
-          //       <p className='navbar-brand'>MO Shop</p>
-          //     </Link>
-          //     <NavbarToggler onClick={this.toggle} />
-          //     <Collapse isOpen={this.state.isOpen} navbar>
-          //       <Nav className="ml-auto" navbar>
-          //         <UncontrolledDropdown nav inNavbar>
-          //           <DropdownToggle nav caret>
-          //             <Icon name="user" />
-          //           </DropdownToggle>
-          //           <DropdownMenu right>
-          //             <Link to={'/account'} style={{ textDecoration: 'none' }} onClick={this.closeCollapse}>
-          //               <p className="dropdown-item">Account</p>
-          //             </Link>
-
-          //             <Link to={'/'} style={{ textDecoration: 'none' }} onClick={this.closeCollapse}>
-          //               <p className="dropdown-item" onClick={this.logout}>Logout</p>
-          //             </Link>
-          //           </DropdownMenu>
-          //         </UncontrolledDropdown>
-          //       </Nav>
-          //     </Collapse>
-          //   </Navbar>
-          // </div>
         )
     );
   }
