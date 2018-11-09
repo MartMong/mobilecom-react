@@ -8,5 +8,9 @@ export default {
             axios.post('/api/auth',{credentials}).then(res=>res.data.user),
         getUserDetail: () =>
             axios.get('/api/user').then(res=>res.data)
-     }
+     },
+    product:{
+        getAllProduct : () => 
+            axios.get('/api/products').then(res => res.data)
+    }
 }
