@@ -3,43 +3,59 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ProductCard from '../ProductCard';
-import {Row} from 'reactstrap';
+import { Row } from 'reactstrap';
 
-import {getAllProduct} from '../../redux/actions/product'
+import { getAllProduct } from '../../redux/actions/product'
 
 class DashBoardPage extends Component {
 
-  // cards = () => {
-  //   let cards = [];
-  //   for (let i = 0; i < 20; i++) {
-  //     {
-  //       cards.push(<ProductCard/>);
-  //     }
-  //   }
-  //   return <Row>{cards}</Row>;
-  // }
-  
   componentDidMount(){
     this.props.getAllProduct()
   }
 
-  render() {
+  createCards = () => {
+    const cards = this.props.products.products;
     console.log(this.props)
+    let CardsComp = [];
+    if (cards != undefined){
+      cards.forEach(item => {
+        CardsComp.push(<ProductCard key={item.productID} pictures={item.pictures} details={item.details} brand={item.brand}/>)
+      })
+      return <Row>{CardsComp}</Row>;
+    }
+    // const CardsComp = cards.map((item) =>
+    //   console.log(item)
+      // <ProductCard key={item.productID} pictures={item.pictures} details={item.details}/>
+    // );
+    // return <div>{CardsComp}</div>
+  }
+
+  render() {
+    // console.log(this.props.products)
+    // console.log(this.props)
+    this.createCards()
     return (
-      <h1>DashBoard</h1>
-      // <div style={{ marginTop: '100px' }}>
-      //   {this.cards()}
-      // </div>
+      <div>
+        <h1>DashBoard</h1>
+        {this.createCards()}
+      </div>
+      
     )
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return(
-//     {
-//       products:state.products
-//     }
-//   )
-// }
+const mapStateToProps = (state) => {
+  return (
+    {
+      products: state.product
+    }
+  )
+}
 
-export default connect(null,{getAllProduct})(DashBoardPage);
+
+DashBoardPage.propTypes = {
+  getAllProduct: PropTypes.func.isRequired,
+  products: PropTypes.array.isRequired
+}
+
+export default connect(mapStateToProps, { getAllProduct })(DashBoardPage);
