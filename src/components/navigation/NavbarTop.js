@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import SearchForm from '../forms/SearchForm';
 import { logout } from '../../redux/actions/auth';
 import {
   Collapse,
@@ -58,13 +59,6 @@ class NavbarTop extends React.Component {
                   <NavItem>
                     <NavLink href="/">Promotions</NavLink>
                   </NavItem>
-                  <Form inline>
-                    <Input type="search" className="mr-3" placeholder="Search..." />
-                    <span>
-                      <button type='submit' class='ui circular icon button' role='button'>
-                        <i aria-hidden='true' class='search icon' />
-                      </button></span>
-                  </Form>
                   <Link to='/login'>
                     <NavItem>
                       <button class='ui icon button mr-3' role='button'>
@@ -100,13 +94,7 @@ class NavbarTop extends React.Component {
                         <NavLink>Account</NavLink>
                       </Link>
                     </NavItem>
-                    <Form inline>
-                      <Input type="search" className="mr-3" placeholder="Search..." />
-                      <span>
-                        <button type='submit' class='ui circular icon button' role='button'>
-                          <i aria-hidden='true' class='search icon' />
-                        </button></span>
-                    </Form>
+                    <SearchForm/>
                     <NavItem>
                       <button class='ui icon button mr-3' role='button' onClick={this.logout}>
                         Logout
