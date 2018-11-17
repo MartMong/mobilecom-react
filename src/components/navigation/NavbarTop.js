@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchForm from '../forms/SearchForm';
 import { logout } from '../../redux/actions/auth';
+import table from '../pages/table';
 import {
   Collapse,
   Navbar,
@@ -57,7 +58,7 @@ class NavbarTop extends React.Component {
                     <NavLink href="/">Home</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/">Promotions</NavLink>
+                    <NavLink href="/table">Promotions</NavLink>
                   </NavItem>
                   <Link to='/login'>
                     <NavItem>
@@ -94,6 +95,11 @@ class NavbarTop extends React.Component {
                         <NavLink>Account</NavLink>
                       </Link>
                     </NavItem>
+                    <NavItem>
+                    <Link to='/table'>
+                      <NavLink>Table</NavLink>
+                    </Link>
+                  </NavItem>
                     <SearchForm/>
                     <NavItem>
                       <button class='ui icon button mr-3' role='button' onClick={this.logout}>

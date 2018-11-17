@@ -10,10 +10,13 @@ import decode from 'jwt-decode';
 import "semantic-ui-css/semantic.min.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './redux/rootReducer';
 import {userLoggedIn} from './redux/actions/auth';
+import { Responsive } from 'semantic-ui-react';
+
 
 
 const store = createStore(
