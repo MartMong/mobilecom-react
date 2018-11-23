@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 
 import ProductCard from '../ProductCard';
 import { Row } from 'reactstrap';
 
-import { getAllProduct } from '../../redux/actions/product'
+import { getAllProduct } from '../../redux/actions/product';
+import Carousel from '../carousel';
 
 class DashBoardPage extends Component {
 
@@ -37,6 +39,7 @@ class DashBoardPage extends Component {
     return (
       <div>
         <h1>DashBoard</h1>
+        <Carousel />
         {this.createCards()}
       </div>
       

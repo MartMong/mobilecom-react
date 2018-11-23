@@ -9,6 +9,7 @@ import HomePage from './components/pages/HomePage';
 import DashBoardPage from './components/pages/DashBoardPage';
 import AccountPage from './components/pages/AccountPage';
 import table from './components/pages/table';
+import Carousel from './components/carousel';
 
 import Navbar from './components/navigation/NavbarTop';
 
