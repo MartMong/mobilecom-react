@@ -6,6 +6,7 @@ import { composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import decode from 'jwt-decode';
+import axios from 'axios';
 
 import "semantic-ui-css/semantic.min.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,6 +33,7 @@ if(localStorage.mobilecomJWT){
     console.log('in index')
 }
 
+axios.defaults.baseURL = 'https://mobile-com-api.herokuapp.com/';
 
 ReactDOM.render(
     <BrowserRouter>

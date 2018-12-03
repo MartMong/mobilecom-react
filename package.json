@@ -23,12 +23,12 @@
     "validator": "^10.7.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
+    "production": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "clean":"rm -rf build"
   },
-  "proxy": "https://mobile-com-api.herokuapp.com/"
+  "proxy":"https://mobile-com-api.herokuapp.com/"
 }
