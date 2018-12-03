@@ -6,6 +6,7 @@ import ProductCard from '../ProductCard';
 import { Row } from 'reactstrap';
 
 import { getAllProduct } from '../../redux/actions/product'
+import Slide from '../Slide';
 
 class DashBoardPage extends Component {
 
@@ -31,11 +32,10 @@ class DashBoardPage extends Component {
   }
 
   render() {
-    // console.log(this.props.products)
-    // console.log(this.props)
     this.createCards()
     return (
       <div>
+        <Slide/>
         <h1>DashBoard</h1>
         {this.createCards()}
       </div>

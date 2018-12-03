@@ -11,6 +11,7 @@ import AccountPage from './components/pages/AccountPage';
 import TablePage from './components/pages/TablePage';
 
 import Navbar from './components/navigation/NavbarTop';
+import Footer from './components/navigation/Footer';
 
 import UserRoute from './routes/UserRoute';
 import GuestRoute from './routes/GuestRoute';
@@ -34,6 +35,7 @@ class App extends Component {
           <UserRoute path='/account' exact component={AccountPage} />
           <UserRoute path='/table' exact component={TablePage}/>
           </div>
+          <Footer/>
         </Container>
       </div>
 

@@ -3,8 +3,6 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 class TablePage extends Component {
-
-
   render() {
     console.log(this.props.location.state.options)
     const data = this.props.location.state.options;
@@ -22,7 +20,7 @@ class TablePage extends Component {
             maxHeight:'95px',
             width: 'auto',
             height: 'auto',
-            borderBottom:10
+            marginBottom:10
           }} 
             src={e.pictures[0]}
           />
