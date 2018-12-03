@@ -8,6 +8,7 @@ import SignupPage from './components/pages/SignupPage';
 import HomePage from './components/pages/HomePage';
 import DashBoardPage from './components/pages/DashBoardPage';
 import AccountPage from './components/pages/AccountPage';
+import TablePage from './components/pages/TablePage';
 
 import Navbar from './components/navigation/NavbarTop';
 
@@ -31,6 +32,7 @@ class App extends Component {
           <GuestRoute path='/signup' exact component={SignupPage} />
           <UserRoute path='/dashboard' exact component={DashBoardPage} />
           <UserRoute path='/account' exact component={AccountPage} />
+          <UserRoute path='/table' exact component={TablePage}/>
           </div>
         </Container>
       </div>
