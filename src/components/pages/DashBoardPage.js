@@ -22,7 +22,7 @@ class DashBoardPage extends Component {
       cards.forEach(item => {
         CardsComp.push(<ProductCard key={item.productID} pictures={item.pictures} details={item.details} brand={item.brand}/>)
       })
-      return <Row>{CardsComp}</Row>;
+      return <Row style={{alignContent:'center'}}>{CardsComp}</Row>;
     }
     // const CardsComp = cards.map((item) =>
     //   console.log(item)
@@ -36,7 +36,7 @@ class DashBoardPage extends Component {
     return (
       <div>
         <Slide/>
-        <h1>DashBoard</h1>
+        <h1 style={{textAlign:'center',marginTop:'50px',marginBottom:'50px'}}>DashBoard</h1>
         {this.createCards()}
       </div>
       

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 const CardExampleCardProps = (props) => {
     return (
-        <div className='ui card col-md-3 col-sm-4' style={{ margin: '10px 15px' }}>
+        <div className='ui card col-md-3 col-sm-4' style={{margin:'15px 40px'}}>
             <img src={props.pictures[0]} className='ui image' />
             <div className='content'>
                 <div className='header'>{props.brand}</div>
