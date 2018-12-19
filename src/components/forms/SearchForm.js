@@ -23,10 +23,36 @@ class SearchForm extends Component {
   }
 
   fetchOptions = () => {
-    if (!this.state.query) return;
-    console.log(this.state.query)
-    this.setState({ loading: true });
-    axios.get(`/api/products/search?car=${this.state.query}`)
+    if (this.state.query==''){
+      this.setState({ loading: true });
+
+      axios.get('/api/products')
+      .then(res => res.data.products)
+      .then(cars => {
+        const options = [];
+        const carIDs = [];
+        const tableData = [];
+        cars.forEach(car => {
+          console.log(car)
+          carIDs[car.productID] = car;
+          options.push({
+            key: car.productID,
+            title: car.brand,
+            image: car.pictures[0],
+            model: car.model,
+            description: car.model
+          });
+          tableData.push(car);
+        });
+        console.log(carIDs)
+        console.log(options)
+        this.setState({ loading: false, options, cars: carIDs ,tableData});
+
+      })
+    }else{
+      this.setState({ loading: true });
+
+      axios.get(`/api/products/search?car=${this.state.query}`)
       .then(res => res.data.data)
       .then(cars => {
         const options = [];
@@ -49,6 +75,8 @@ class SearchForm extends Component {
         this.setState({ loading: false, options, cars: carIDs ,tableData});
 
       })
+    }
+  
   }
 
   onSubmit = (e) => {
