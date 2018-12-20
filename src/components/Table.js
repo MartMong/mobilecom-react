@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import ModalImage from 'react-modal-image'
 
 class Tables extends Component {
   render() {
@@ -9,23 +10,19 @@ class Tables extends Component {
     // const data = this.props.location.state.options;
     var productList = data.map( e=>{
       return(
-        <Tr>
-          <Td>{e.productID}</Td>
-          <Td>{e.brand}</Td>
-          <Td>{e.model}</Td>
-          <Td>{e.details[0]}</Td>
-          <Td>{e.details[1]}</Td>
-          <img 
-            style={{
-            maxWidth:'230px',
-            maxHeight:'95px',
-            width: null,
-            height: null,
-            marginBottom:10
-          }} 
-            src={e.pictures[0]}
+        <Tr style={{border: '1px solid black'}}>
+          <Td style={{textAlign:'center'}}>{e.productID}</Td>
+          <Td style={{textAlign:'center'}}>{e.brand}</Td>
+          <Td style={{textAlign:'center'}}>{e.model}</Td>
+          <Td style={{textAlign:'center'}}>{e.details[0]}</Td>
+          <Td style={{textAlign:'center'}}>{e.details[1]}</Td>
+          
+          <ModalImage style={{textAlign:'center'}}
+            small={e.pictures[0]}
+            large={e.pictures[0]}
+            alt="Hello World!"
           />
-          <Td>{e.quantity}</Td>
+          <Td style={{textAlign:'center'}}>{e.quantity}</Td>
         </Tr>
       )
     })
@@ -33,13 +30,13 @@ class Tables extends Component {
       <Table>
         <Thead>
           <Tr>
-            <Th>Product Id</Th>
-            <Th>Brand</Th>
-            <Th>Model</Th>
-            <Th>detail one</Th>
-            <Th>detail two</Th>
-            <Th>Photo</Th>
-            <Th>Quantity</Th>
+            <Th style={{textAlign:'center'}}>Product Id</Th>
+            <Th style={{textAlign:'center'}}>Brand</Th>
+            <Th style={{textAlign:'center'}}>Model</Th>
+            <Th style={{textAlign:'center'}}>detail one</Th>
+            <Th style={{textAlign:'center'}}>detail two</Th>
+            <Th style={{textAlign:'center'}}>Photo</Th>
+            <Th style={{textAlign:'center'}}>Quantity</Th>
           </Tr>
         </Thead>
         <Tbody>
